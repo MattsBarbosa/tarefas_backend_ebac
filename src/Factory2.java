@@ -5,10 +5,7 @@ public class Factory2 extends AbstractCarFactory{
     private static String FormatPrice(Double number){
         int zerosAfterDecimal = 3;
 
-        StringBuilder patternBuilder = new StringBuilder("#.");
-        patternBuilder.append("0".repeat(zerosAfterDecimal));
-        String pattern = patternBuilder.toString();
-
+        String pattern = "#." + "0".repeat(zerosAfterDecimal);
         DecimalFormat decimalFormat = new DecimalFormat(pattern);
         return decimalFormat.format(number);
     }
