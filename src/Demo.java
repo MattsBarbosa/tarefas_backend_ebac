@@ -8,6 +8,12 @@ public class Demo {
         List<Carros> listaDeCarros = new ArrayList<>();
         listaDeCarros.add(new Audi());
         listaDeCarros.add(new Toyota());
-        System.out.println(listaDeCarros);
+        imprimir(listaDeCarros);
+    }
+
+    public static <T> void imprimir(List<T> lista) {
+        for (T item : lista) {
+            System.out.println(item);
+        }
     }
 }
