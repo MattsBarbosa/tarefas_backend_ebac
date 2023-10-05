@@ -1,12 +1,13 @@
 /**
  * 
  */
-package java.br.com.rpires.dao;
+package test.java.br.com.rpires.dao;
+
+import main.java.dao.IProdutoDAO;
+import main.java.domain.Produto;
+import main.java.exceptions.TipoChaveNaoEncontradaException;
 
 import java.util.Collection;
-
-import br.com.rpires.domain.Produto;
-import br.com.rpires.exceptions.TipoChaveNaoEncontradaException;
 
 /**
  * @author rodrigo.pires

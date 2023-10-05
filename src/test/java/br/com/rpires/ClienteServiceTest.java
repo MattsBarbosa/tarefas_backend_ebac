@@ -1,19 +1,19 @@
 /**
  * 
  */
-package java.br.com.rpires;
+package test.java.br.com.rpires;
 
+import main.java.dao.IClienteDAO;
+import main.java.domain.Cliente;
+import main.java.exceptions.DAOException;
+import main.java.exceptions.TipoChaveNaoEncontradaException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.rpires.dao.ClienteDaoMock;
-import br.com.rpires.dao.IClienteDAO;
-import br.com.rpires.domain.Cliente;
-import br.com.rpires.exceptions.DAOException;
-import br.com.rpires.exceptions.TipoChaveNaoEncontradaException;
-import br.com.rpires.services.ClienteService;
-import br.com.rpires.services.IClienteService;
+import main.java.services.ClienteService;
+import main.java.services.IClienteService;
+import test.java.br.com.rpires.dao.ClienteDaoMock;
 
 /**
  * @author rodrigo.pires

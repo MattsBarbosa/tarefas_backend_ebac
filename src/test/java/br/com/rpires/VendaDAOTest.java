@@ -1,7 +1,7 @@
 /**
  * 
  */
-package java.br.com.rpires;
+package test.java.br.com.rpires;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -17,25 +17,19 @@ import java.sql.SQLException;
 import java.time.Instant;
 import java.util.Collection;
 
+import main.java.dao.*;
+import main.java.dao.generic.jdbc.ConnectionFactory;
+import main.java.domain.Cliente;
+import main.java.domain.Produto;
+import main.java.domain.Venda;
+import main.java.exceptions.DAOException;
+import main.java.exceptions.MaisDeUmRegistroException;
+import main.java.exceptions.TableException;
+import main.java.exceptions.TipoChaveNaoEncontradaException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.rpires.dao.ClienteDAO;
-import br.com.rpires.dao.IClienteDAO;
-import br.com.rpires.dao.IProdutoDAO;
-import br.com.rpires.dao.IVendaDAO;
-import br.com.rpires.dao.ProdutoDAO;
-import br.com.rpires.dao.VendaDAO;
-import br.com.rpires.dao.generic.jdbc.ConnectionFactory;
-import br.com.rpires.domain.Cliente;
-import br.com.rpires.domain.Produto;
-import br.com.rpires.domain.Venda;
-import br.com.rpires.domain.Venda.Status;
-import br.com.rpires.exceptions.DAOException;
-import br.com.rpires.exceptions.MaisDeUmRegistroException;
-import br.com.rpires.exceptions.TableException;
-import br.com.rpires.exceptions.TipoChaveNaoEncontradaException;
 
 /**
  * @author rodrigo.pires
@@ -97,7 +91,7 @@ public class VendaDAOTest {
 		assertTrue(retorno);
 		
 		assertTrue(venda.getValorTotal().equals(BigDecimal.valueOf(20)));
-		assertTrue(venda.getStatus().equals(Status.INICIADA));
+		assertTrue(venda.getStatus().equals(Venda.Status.INICIADA));
 		
 		Venda vendaConsultada = vendaDao.consultar(venda.getCodigo());
 		assertTrue(vendaConsultada.getId() != null);
@@ -118,7 +112,7 @@ public class VendaDAOTest {
 		
 		Venda vendaConsultada = vendaDao.consultar(codigoVenda);
 		assertEquals(codigoVenda, vendaConsultada.getCodigo());
-		assertEquals(Status.CANCELADA, vendaConsultada.getStatus());
+		assertEquals(Venda.Status.CANCELADA, vendaConsultada.getStatus());
 	}
 	
 	@Test
@@ -136,7 +130,7 @@ public class VendaDAOTest {
 		assertTrue(vendaConsultada.getQuantidadeTotalProdutos() == 3);
 		BigDecimal valorTotal = BigDecimal.valueOf(30).setScale(2, RoundingMode.HALF_DOWN);
 		assertTrue(vendaConsultada.getValorTotal().equals(valorTotal));
-		assertTrue(vendaConsultada.getStatus().equals(Status.INICIADA));
+		assertTrue(vendaConsultada.getStatus().equals(Venda.Status.INICIADA));
 	} 
 	
 	@Test
@@ -158,7 +152,7 @@ public class VendaDAOTest {
 		assertTrue(vendaConsultada.getQuantidadeTotalProdutos() == 3);
 		BigDecimal valorTotal = BigDecimal.valueOf(70).setScale(2, RoundingMode.HALF_DOWN);
 		assertTrue(vendaConsultada.getValorTotal().equals(valorTotal));
-		assertTrue(vendaConsultada.getStatus().equals(Status.INICIADA));
+		assertTrue(vendaConsultada.getStatus().equals(Venda.Status.INICIADA));
 	} 
 	
 	@Test(expected = DAOException.class)
@@ -169,7 +163,7 @@ public class VendaDAOTest {
 	
 		Boolean retorno1 = vendaDao.cadastrar(venda);
 		assertFalse(retorno1);
-		assertTrue(venda.getStatus().equals(Status.INICIADA));
+		assertTrue(venda.getStatus().equals(Venda.Status.INICIADA));
 	} 
 	
 	@Test
@@ -196,7 +190,7 @@ public class VendaDAOTest {
 		assertTrue(vendaConsultada.getQuantidadeTotalProdutos() == 2);
 		valorTotal = BigDecimal.valueOf(20).setScale(2, RoundingMode.HALF_DOWN);
 		assertTrue(vendaConsultada.getValorTotal().equals(valorTotal));
-		assertTrue(vendaConsultada.getStatus().equals(Status.INICIADA));
+		assertTrue(vendaConsultada.getStatus().equals(Venda.Status.INICIADA));
 	} 
 	
 	@Test
@@ -223,7 +217,7 @@ public class VendaDAOTest {
 		assertTrue(vendaConsultada.getQuantidadeTotalProdutos() == 2);
 		valorTotal = BigDecimal.valueOf(20).setScale(2, RoundingMode.HALF_DOWN);
 		assertTrue(vendaConsultada.getValorTotal().equals(valorTotal));
-		assertTrue(vendaConsultada.getStatus().equals(Status.INICIADA));
+		assertTrue(vendaConsultada.getStatus().equals(Venda.Status.INICIADA));
 	} 
 	
 	@Test
@@ -249,7 +243,7 @@ public class VendaDAOTest {
 		vendaConsultada.removerTodosProdutos();
 		assertTrue(vendaConsultada.getQuantidadeTotalProdutos() == 0);
 		assertTrue(vendaConsultada.getValorTotal().equals(BigDecimal.valueOf(0)));
-		assertTrue(vendaConsultada.getStatus().equals(Status.INICIADA));
+		assertTrue(vendaConsultada.getStatus().equals(Venda.Status.INICIADA));
 	} 
 	
 	@Test
@@ -265,7 +259,7 @@ public class VendaDAOTest {
 		
 		Venda vendaConsultada = vendaDao.consultar(codigoVenda);
 		assertEquals(venda.getCodigo(), vendaConsultada.getCodigo());
-		assertEquals(Status.CONCLUIDA, vendaConsultada.getStatus());
+		assertEquals(Venda.Status.CONCLUIDA, vendaConsultada.getStatus());
 	}
 	
 	@Test(expected = UnsupportedOperationException.class)
@@ -280,7 +274,7 @@ public class VendaDAOTest {
 		vendaDao.finalizarVenda(venda);
 		Venda vendaConsultada = vendaDao.consultar(codigoVenda);
 		assertEquals(venda.getCodigo(), vendaConsultada.getCodigo());
-		assertEquals(Status.CONCLUIDA, vendaConsultada.getStatus());
+		assertEquals(Venda.Status.CONCLUIDA, vendaConsultada.getStatus());
 		
 		vendaConsultada.adicionarProduto(this.produto, 1);
 		
@@ -314,7 +308,7 @@ public class VendaDAOTest {
 		venda.setCodigo(codigo);
 		venda.setDataVenda(Instant.now());
 		venda.setCliente(this.cliente);
-		venda.setStatus(Status.INICIADA);
+		venda.setStatus(Venda.Status.INICIADA);
 		venda.adicionarProduto(this.produto, 2);
 		return venda;
 	}

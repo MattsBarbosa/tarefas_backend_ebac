@@ -1,11 +1,12 @@
-package java.br.com.rpires.dao;
+package test.java.br.com.rpires.dao;
+
+import main.java.dao.IClienteDAO;
+import main.java.domain.Cliente;
+import main.java.exceptions.TipoChaveNaoEncontradaException;
 
 import java.util.Collection;
 
-import br.com.rpires.domain.Cliente;
-import br.com.rpires.exceptions.TipoChaveNaoEncontradaException;
-
-public class ClienteDaoMock implements br.com.rpires.dao.IClienteDAO {
+public class ClienteDaoMock implements IClienteDAO {
 
 	@Override
 	public Boolean cadastrar(Cliente entity) throws TipoChaveNaoEncontradaException {

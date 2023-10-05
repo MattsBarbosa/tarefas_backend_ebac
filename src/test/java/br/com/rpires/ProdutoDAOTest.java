@@ -1,7 +1,7 @@
 /**
  * 
  */
-package java.br.com.rpires;
+package test.java.br.com.rpires;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -10,17 +10,16 @@ import static org.junit.Assert.assertTrue;
 import java.math.BigDecimal;
 import java.util.Collection;
 
+import main.java.dao.IProdutoDAO;
+import main.java.dao.ProdutoDAO;
+import main.java.domain.Produto;
+import main.java.exceptions.DAOException;
+import main.java.exceptions.MaisDeUmRegistroException;
+import main.java.exceptions.TableException;
+import main.java.exceptions.TipoChaveNaoEncontradaException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-
-import br.com.rpires.dao.IProdutoDAO;
-import br.com.rpires.dao.ProdutoDAO;
-import br.com.rpires.domain.Produto;
-import br.com.rpires.exceptions.DAOException;
-import br.com.rpires.exceptions.MaisDeUmRegistroException;
-import br.com.rpires.exceptions.TableException;
-import br.com.rpires.exceptions.TipoChaveNaoEncontradaException;
 
 /**
  * @author rodrigo.pires

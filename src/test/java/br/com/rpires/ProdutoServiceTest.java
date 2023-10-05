@@ -1,21 +1,21 @@
 /**
  * 
  */
-package java.br.com.rpires;
+package test.java.br.com.rpires;
 
 import java.math.BigDecimal;
 
+import main.java.dao.IProdutoDAO;
+import main.java.domain.Produto;
+import main.java.exceptions.DAOException;
+import main.java.exceptions.TipoChaveNaoEncontradaException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import br.com.rpires.dao.IProdutoDAO;
-import br.com.rpires.dao.ProdutoDaoMock;
-import br.com.rpires.domain.Produto;
-import br.com.rpires.exceptions.DAOException;
-import br.com.rpires.exceptions.TipoChaveNaoEncontradaException;
-import br.com.rpires.services.IProdutoService;
-import br.com.rpires.services.ProdutoService;
+import main.java.services.IProdutoService;
+import main.java.services.ProdutoService;
+import test.java.br.com.rpires.dao.ProdutoDaoMock;
 
 /**
  * @author rodrigo.pires

@@ -1,12 +1,8 @@
 /**
  * 
  */
-package java.br.com.rpires;
+package test.java.br.com.rpires;
 
-import java.br.com.rpires.ClienteServiceTest;
-import java.br.com.rpires.ProdutoDAOTest;
-import java.br.com.rpires.ProdutoServiceTest;
-import java.br.com.rpires.VendaDAOTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

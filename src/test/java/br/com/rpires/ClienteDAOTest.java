@@ -1,23 +1,23 @@
 /**
  * 
  */
-package java.br.com.rpires;
+package test.java.br.com.rpires;
 
-import static org.junit.Assert.assertTrue;
-
-import java.util.Collection;
-
+import main.java.dao.ClienteDAO;
+import main.java.dao.IClienteDAO;
+import main.java.domain.Cliente;
+import main.java.exceptions.DAOException;
+import main.java.exceptions.MaisDeUmRegistroException;
+import main.java.exceptions.TableException;
+import main.java.exceptions.TipoChaveNaoEncontradaException;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 
-import br.com.rpires.dao.ClienteDAO;
-import br.com.rpires.dao.IClienteDAO;
-import br.com.rpires.domain.Cliente;
-import br.com.rpires.exceptions.DAOException;
-import br.com.rpires.exceptions.MaisDeUmRegistroException;
-import br.com.rpires.exceptions.TableException;
-import br.com.rpires.exceptions.TipoChaveNaoEncontradaException;
+import java.util.Collection;
+
+import static org.junit.Assert.assertTrue;
+
 
 /**
  * @author rodrigo.pires
