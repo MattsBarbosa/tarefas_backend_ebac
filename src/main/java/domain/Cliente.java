@@ -20,7 +20,10 @@ public class Cliente implements Persistente {
 	
 	@ColunaTabela(dbName = "nome", setJavaName = "setNome")
 	private String nome;
-	
+
+	@ColunaTabela(dbName = "sexo", setJavaName = "setSexo")
+	private String sexo;
+
 	@TipoChave("getCpf")
 	@ColunaTabela(dbName = "cpf", setJavaName = "setCpf")
     private Long cpf;
@@ -39,7 +42,13 @@ public class Cliente implements Persistente {
     
 	@ColunaTabela(dbName = "estado", setJavaName = "setEstado")
     private String estado;
-    
+
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
 	public String getNome() {
 		return nome;
 	}

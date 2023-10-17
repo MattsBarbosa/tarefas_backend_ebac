@@ -9,6 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.Collection;
+import java.util.Optional;
 
 import main.java.dao.IProdutoDAO;
 import main.java.dao.ProdutoDAO;
@@ -52,6 +53,7 @@ public class ProdutoDAOTest {
 		produto.setDescricao("Produto 1");
 		produto.setNome("Produto 1");
 		produto.setValor(BigDecimal.TEN);
+		produto.setQuantidade(10);
 		produtoDao.cadastrar(produto);
 		return produto;
 	}
@@ -115,5 +117,14 @@ public class ProdutoDAOTest {
 		assertTrue(list != null);
 		assertTrue(list.size() == 0);
 		
+	}
+
+	@Test
+	public void buscarQuantidade() throws DAOException, TipoChaveNaoEncontradaException, MaisDeUmRegistroException, TableException {
+		Produto produto = criarProduto("A1");
+		Assert.assertNotNull(produto);
+		Produto produtoDB = this.produtoDao.consultar(produto.getCodigo());
+		Assert.assertNotNull(produtoDB.getQuantidade());
+		excluir(produtoDB.getCodigo());
 	}
 }
